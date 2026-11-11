@@ -1,9 +1,10 @@
 import uuid
 from sqlalchemy import String, func
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
-from datetime import date, datetime
+from datetime import datetime
 
 class Department(Base):
     __tablename__ = "departments"
@@ -28,7 +29,7 @@ class Department(Base):
     )
 
     created_at: Mapped[datetime] = mapped_column(
-        datetime(timezone=True),
+        DateTime(timezone=True),
         server_default=func.now(),
         nullable=False
     )
